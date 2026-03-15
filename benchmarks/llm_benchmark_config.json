@@ -1,0 +1,179 @@
+{
+  "test_settings": {
+    "warmup_runs": 1,
+    "test_runs": 3,
+    "timeout_seconds": 120,
+    "output_dir": "./benchmarks/results",
+    "save_responses": true
+  },
+  "providers": [
+    {
+      "name": "nvidia",
+      "display_name": "NVIDIA NIM",
+      "enabled": true,
+      "api_key": "${NVIDIA_API_KEY}",
+      "api_base": "https://integrate.api.nvidia.com/v1",
+      "models": [
+        {
+          "name": "z-ai/glm4.7",
+          "enabled": true,
+          "max_tokens": 4096,
+          "temperature": 0.7
+        }
+      ]
+    },
+    {
+      "name": "moonshot",
+      "display_name": "Moonshot AI",
+      "enabled": true,
+      "api_key": "${MOONSHOT_API_KEY}",
+      "api_base": "https://api.moonshot.cn/v1",
+      "models": [
+        {
+          "name": "kimi-k2.5",
+          "enabled": true,
+          "max_tokens": 4096,
+          "temperature": 1.0
+        }
+      ]
+    },
+    {
+      "name": "minimax",
+      "display_name": "MiniMax",
+      "enabled": true,
+      "api_key": "${MINIMAX_API_KEY}",
+      "api_base": "https://api.minimax.chat/v1",
+      "models": [
+        {
+          "name": "minimax-m2.1",
+          "enabled": true,
+          "max_tokens": 4096,
+          "temperature": 0.7
+        }
+      ]
+    }
+  ],
+  "test_cases": [
+    {
+      "id": "simple_qa",
+      "name": "简单问答",
+      "category": "basic",
+      "description": "测试基础对话能力",
+      "messages": [
+        {
+          "role": "user",
+          "content": "什么是机器学习？请用简洁的语言解释。"
+        }
+      ],
+      "expected_keywords": ["算法", "数据", "学习", "模型"],
+      "metrics": ["response_time", "token_usage", "response_length"]
+    },
+    {
+      "id": "code_generation",
+      "name": "代码生成",
+      "category": "coding",
+      "description": "测试代码生成能力",
+      "messages": [
+        {
+          "role": "user",
+          "content": "用Python写一个快速排序算法，包含注释和示例用法。"
+        }
+      ],
+      "expected_keywords": ["def", "quick_sort", "return", "if"],
+      "metrics": ["response_time", "token_usage", "code_quality"]
+    },
+    {
+      "id": "long_context",
+      "name": "长文本处理",
+      "category": "context",
+      "description": "测试长文本理解和生成能力",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请阅读以下文章并总结主要观点：[这里会插入长文本]"
+        }
+      ],
+      "context_file": "benchmarks/data/long_text_sample.txt",
+      "expected_keywords": ["总结", "主要", "观点"],
+      "metrics": ["response_time", "token_usage", "summary_quality"]
+    },
+    {
+      "id": "chinese_reasoning",
+      "name": "中文推理",
+      "category": "reasoning",
+      "description": "测试中文逻辑推理能力",
+      "messages": [
+        {
+          "role": "user",
+          "content": "小明比小红高，小红比小亮高。请问谁最高？请解释推理过程。"
+        }
+      ],
+      "expected_keywords": ["小明", "高", "推理"],
+      "metrics": ["response_time", "reasoning_quality"]
+    },
+    {
+      "id": "creative_writing",
+      "name": "创意写作",
+      "category": "creative",
+      "description": "测试创意写作能力",
+      "messages": [
+        {
+          "role": "user",
+          "content": "写一个关于未来城市的100字微小说。"
+        }
+      ],
+      "expected_keywords": [],
+      "metrics": ["response_time", "creativity_score"]
+    },
+    {
+      "id": "math_problem",
+      "name": "数学问题",
+      "category": "math",
+      "description": "测试数学计算和推理能力",
+      "messages": [
+        {
+          "role": "user",
+          "content": "解这个方程：2x² + 5x - 3 = 0，并展示解题步骤。"
+        }
+      ],
+      "expected_keywords": ["x", "解", "方程"],
+      "metrics": ["response_time", "accuracy"]
+    },
+    {
+      "id": "multi_turn_conversation",
+      "name": "多轮对话",
+      "category": "conversation",
+      "description": "测试多轮对话连贯性",
+      "messages": [
+        {
+          "role": "user",
+          "content": "我想学习Python编程。"
+        },
+        {
+          "role": "assistant",
+          "content": "太好了！Python是一门非常流行的编程语言。您有编程基础吗？"
+        },
+        {
+          "role": "user",
+          "content": "我有一些基础，但想深入学习数据分析方向。"
+        }
+      ],
+      "expected_keywords": ["pandas", "numpy", "数据分析"],
+      "metrics": ["response_time", "context_awareness"]
+    },
+    {
+      "id": "tool_calling_simulation",
+      "name": "工具调用模拟",
+      "category": "tools",
+      "description": "测试工具调用理解能力",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请帮我读取文件config.json的内容，然后搜索Python最新版本的信息。"
+        }
+      ],
+      "expected_keywords": ["文件", "搜索", "读取"],
+      "metrics": ["response_time", "tool_understanding"]
+    }
+  ]
+}
