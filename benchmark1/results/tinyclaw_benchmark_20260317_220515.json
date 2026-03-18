@@ -1,0 +1,479 @@
+{
+  "timestamp": "2026-03-17T22:05:05.471308",
+  "tinyclaw_version": "0.1.0",
+  "test_environment": {
+    "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "cpu_count": 24,
+    "timestamp": "2026-03-17T22:05:05.500314"
+  },
+  "summary": {
+    "tool_benchmark": {
+      "total_tests": 41,
+      "successful": 28,
+      "failed": 13,
+      "by_tool": {
+        "write_file": {
+          "count": 5,
+          "success_rate": 0.0,
+          "avg_time_ms": 0,
+          "min_time_ms": 0,
+          "max_time_ms": 0,
+          "median_time_ms": 0
+        },
+        "read_file": {
+          "count": 5,
+          "success_rate": 1.0,
+          "avg_time_ms": 0.0025000073947012424,
+          "min_time_ms": 0.001700012944638729,
+          "max_time_ms": 0.0042000028770416975,
+          "median_time_ms": 0.00200001522898674
+        },
+        "list_dir": {
+          "count": 5,
+          "success_rate": 1.0,
+          "avg_time_ms": 0.0022599997464567423,
+          "min_time_ms": 0.001600012183189392,
+          "max_time_ms": 0.0037999998312443495,
+          "median_time_ms": 0.0017999846022576094
+        },
+        "edit_file": {
+          "count": 5,
+          "success_rate": 0.0,
+          "avg_time_ms": 0,
+          "min_time_ms": 0,
+          "max_time_ms": 0,
+          "median_time_ms": 0
+        },
+        "exec": {
+          "count": 12,
+          "success_rate": 1.0,
+          "avg_time_ms": 27.160124998772517,
+          "min_time_ms": 15.11389997904189,
+          "max_time_ms": 46.20359998079948,
+          "median_time_ms": 24.959099988336675
+        },
+        "web_fetch": {
+          "count": 6,
+          "success_rate": 0.5,
+          "avg_time_ms": 2018.6626666691154,
+          "min_time_ms": 1582.5331000087317,
+          "max_time_ms": 2865.2414999960456,
+          "median_time_ms": 1608.213400002569
+        },
+        "concurrent": {
+          "count": 3,
+          "success_rate": 1.0,
+          "avg_time_ms": 0.16649999694588283,
+          "min_time_ms": 0.12859998969361186,
+          "max_time_ms": 0.2148000057786703,
+          "median_time_ms": 0.15609999536536634
+        }
+      }
+    },
+    "llm_benchmark": {
+      "status": "not_run"
+    },
+    "end_to_end_benchmark": {
+      "status": "not_run"
+    }
+  },
+  "tool_results": [
+    {
+      "tool_name": "write_file",
+      "operation": "write_1",
+      "total_time_ms": 0.033499993151053786,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'write_file': missing required path",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_2",
+      "total_time_ms": 0.007700000423938036,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'write_file': missing required path",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_3",
+      "total_time_ms": 0.0048000074457377195,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'write_file': missing required path",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_4",
+      "total_time_ms": 0.0051000097300857306,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'write_file': missing required path",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_5",
+      "total_time_ms": 0.0025999906938523054,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'write_file': missing required path",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_1",
+      "total_time_ms": 0.0042000028770416975,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 69
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_2",
+      "total_time_ms": 0.0026999914553016424,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 69
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_3",
+      "total_time_ms": 0.00200001522898674,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 69
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_4",
+      "total_time_ms": 0.001900014467537403,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 69
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_5",
+      "total_time_ms": 0.001700012944638729,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 69
+      }
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_1",
+      "total_time_ms": 0.0037999998312443495,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_2",
+      "total_time_ms": 0.002400018274784088,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_3",
+      "total_time_ms": 0.0017999846022576094,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_4",
+      "total_time_ms": 0.0016999838408082724,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_5",
+      "total_time_ms": 0.001600012183189392,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_1",
+      "total_time_ms": 0.0051000097300857306,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'edit_file': missing required path; missing required old_text; missing required new_text",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_2",
+      "total_time_ms": 0.0032999960239976645,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'edit_file': missing required path; missing required old_text; missing required new_text",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_3",
+      "total_time_ms": 0.002400018274784088,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'edit_file': missing required path; missing required old_text; missing required new_text",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_4",
+      "total_time_ms": 0.002400018274784088,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'edit_file': missing required path; missing required old_text; missing required new_text",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_5",
+      "total_time_ms": 0.0022999884095042944,
+      "success": false,
+      "error_message": "Error: Invalid parameters for tool 'edit_file': missing required path; missing required old_text; missing required new_text",
+      "metadata": {}
+    },
+    {
+      "tool_name": "exec",
+      "operation": "echo_1",
+      "total_time_ms": 22.14119999553077,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "echo 'Hello World'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "echo_2",
+      "total_time_ms": 18.584800011012703,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "echo 'Hello World'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "echo_3",
+      "total_time_ms": 17.47270001214929,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "echo 'Hello World'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "ls_1",
+      "total_time_ms": 15.11389997904189,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "dir"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "ls_2",
+      "total_time_ms": 15.533300000242889,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "dir"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "ls_3",
+      "total_time_ms": 15.502700000070035,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "dir"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "python_version_1",
+      "total_time_ms": 28.368700004648417,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python --version"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "python_version_2",
+      "total_time_ms": 27.77699998114258,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python --version"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "python_version_3",
+      "total_time_ms": 29.27660002023913,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python --version"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "simple_math_1",
+      "total_time_ms": 44.832599989604205,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python -c 'print(sum(range(1000)))'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "simple_math_2",
+      "total_time_ms": 45.11440001078881,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python -c 'print(sum(range(1000)))'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "simple_math_3",
+      "total_time_ms": 46.20359998079948,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python -c 'print(sum(range(1000)))'"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "httpbin_get_1",
+      "total_time_ms": 1608.213400002569,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "url": "https://httpbin.org/get"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "httpbin_get_2",
+      "total_time_ms": 1582.5331000087317,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "url": "https://httpbin.org/get"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "httpbin_get_3",
+      "total_time_ms": 2865.2414999960456,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "url": "https://httpbin.org/get"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "example_1",
+      "total_time_ms": 2110.2305999957025,
+      "success": false,
+      "error_message": "{\"error\": \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)\", \"url\": \"https://example.com\"}",
+      "metadata": {
+        "url": "https://example.com"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "example_2",
+      "total_time_ms": 726.4665999973658,
+      "success": false,
+      "error_message": "{\"error\": \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)\", \"url\": \"https://example.com\"}",
+      "metadata": {
+        "url": "https://example.com"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "example_3",
+      "total_time_ms": 834.2878999828827,
+      "success": false,
+      "error_message": "{\"error\": \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)\", \"url\": \"https://example.com\"}",
+      "metadata": {
+        "url": "https://example.com"
+      }
+    },
+    {
+      "tool_name": "concurrent",
+      "operation": "concurrent_10_1",
+      "total_time_ms": 0.2148000057786703,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "concurrent_tasks": 10,
+        "success_count": 10
+      }
+    },
+    {
+      "tool_name": "concurrent",
+      "operation": "concurrent_10_2",
+      "total_time_ms": 0.15609999536536634,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "concurrent_tasks": 10,
+        "success_count": 10
+      }
+    },
+    {
+      "tool_name": "concurrent",
+      "operation": "concurrent_10_3",
+      "total_time_ms": 0.12859998969361186,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "concurrent_tasks": 10,
+        "success_count": 10
+      }
+    }
+  ],
+  "llm_results": [],
+  "end_to_end_results": []
+}

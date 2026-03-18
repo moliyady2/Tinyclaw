@@ -1,0 +1,185 @@
+{
+  "test_settings": {
+    "runs_per_prompt": 3,
+    "timeout_seconds": 60,
+    "output_dir": "./perf/results",
+    "save_responses": true
+  },
+  "providers": [
+    {
+      "name": "openrouter",
+      "display_name": "OpenRouter",
+      "enabled": false,
+      "api_key": "${OPENROUTER_API_KEY}",
+      "api_base": "https://openrouter.ai/api/v1",
+      "models": [
+        {
+          "name": "anthropic/claude-3.5-sonnet",
+          "enabled": true,
+          "max_tokens": 1024,
+          "temperature": 0.7
+        },
+        {
+          "name": "openai/gpt-4o-mini",
+          "enabled": true,
+          "max_tokens": 1024,
+          "temperature": 0.7
+        }
+      ]
+    },
+    {
+      "name": "anthropic",
+      "display_name": "Anthropic",
+      "enabled": false,
+      "api_key": "${ANTHROPIC_API_KEY}",
+      "api_base": "",
+      "models": [
+        {
+          "name": "claude-3-5-sonnet-20241022",
+          "enabled": true,
+          "max_tokens": 1024,
+          "temperature": 0.7
+        }
+      ]
+    },
+    {
+      "name": "openai",
+      "display_name": "OpenAI",
+      "enabled": false,
+      "api_key": "${OPENAI_API_KEY}",
+      "api_base": "",
+      "models": [
+        {
+          "name": "gpt-4o-mini",
+          "enabled": true,
+          "max_tokens": 1024,
+          "temperature": 0.7
+        }
+      ]
+    },
+    {
+      "name": "deepseek",
+      "display_name": "DeepSeek",
+      "enabled": false,
+      "api_key": "${DEEPSEEK_API_KEY}",
+      "api_base": "https://api.deepseek.com",
+      "models": [
+        {
+          "name": "deepseek-chat",
+          "enabled": true,
+          "max_tokens": 1024,
+          "temperature": 0.7
+        }
+      ]
+    },
+    {
+      "name": "moonshot",
+      "display_name": "Moonshot AI",
+      "enabled": false,
+      "api_key": "${MOONSHOT_API_KEY}",
+      "api_base": "https://api.moonshot.cn/v1",
+      "models": [
+        {
+          "name": "kimi-k2.5",
+          "enabled": true,
+          "max_tokens": 1024,
+          "temperature": 0.7
+        }
+      ]
+    },
+    {
+      "name": "dashscope",
+      "display_name": "Aliyun DashScope",
+      "enabled": false,
+      "api_key": "${DASHSCOPE_API_KEY}",
+      "api_base": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+      "models": [
+        {
+          "name": "qwen-max",
+          "enabled": true,
+          "max_tokens": 1024,
+          "temperature": 0.7
+        }
+      ]
+    }
+  ],
+  "test_prompts": [
+    {
+      "id": "short_qa",
+      "name": "Short QA",
+      "description": "简单的问答测试",
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is 2+2? Answer with just the number."
+        }
+      ]
+    },
+    {
+      "id": "code_gen_simple",
+      "name": "Simple Code Generation",
+      "description": "简单的代码生成测试",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write a Python function to calculate the factorial of a number. Include a docstring."
+        }
+      ]
+    },
+    {
+      "id": "code_gen_complex",
+      "name": "Complex Code Generation",
+      "description": "复杂的代码生成测试",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Write a Python class that implements a LRU (Least Recently Used) cache with get and put operations. Include type hints and docstrings."
+        }
+      ]
+    },
+    {
+      "id": "reasoning",
+      "name": "Logical Reasoning",
+      "description": "逻辑推理测试",
+      "messages": [
+        {
+          "role": "user",
+          "content": "If all cats are mammals, and some mammals are pets, can we conclude that some cats are pets? Explain your reasoning step by step."
+        }
+      ]
+    },
+    {
+      "id": "chinese_qa",
+      "name": "Chinese QA",
+      "description": "中文问答测试",
+      "messages": [
+        {
+          "role": "user",
+          "content": "请简要介绍一下Python编程语言的特点和优势。"
+        }
+      ]
+    },
+    {
+      "id": "json_generation",
+      "name": "JSON Generation",
+      "description": "JSON 格式生成测试",
+      "messages": [
+        {
+          "role": "user",
+          "content": "Generate a JSON object representing a user profile with fields: name, email, age, and hobbies (array). Use realistic example data."
+        }
+      ]
+    }
+  ],
+  "tool_benchmark_settings": {
+    "filesystem_iterations": 5,
+    "shell_iterations": 3,
+    "web_iterations": 3,
+    "concurrent_tasks": 10,
+    "concurrent_iterations": 3
+  },
+  "end_to_end_settings": {
+    "message_bus_iterations": 100,
+    "context_iterations": 10
+  }
+}
