@@ -39,7 +39,7 @@ pip install -e .
 
 ## 🚀 Quick Start
 
-> \[!TIP]
+> **TIP**
 > Set your API key in `~/.nanobot/config.json`.
 > Get API keys: [OpenRouter](https://openrouter.ai/keys) (Global) · [DashScope](https://dashscope.console.aliyun.com) (Qwen) · [Brave Search](https://brave.com/search/api/) (optional, for web search)
 
@@ -110,7 +110,7 @@ vllm serve meta-llama/Llama-3.1-8B-Instruct --port 8000
 tinyclaw agent -m "Hello from my local LLM!"
 ```
 
-> \[!TIP]
+> **TIP**
 > The `apiKey` can be any non-empty string for local servers that don't require authentication.
 
 ## 💬 Chat Apps
@@ -288,7 +288,7 @@ Uses **WebSocket** long connection — no public IP required.
 tinyclaw gateway
 ```
 
-> \[!TIP]
+> **TIP**
 > Feishu uses WebSocket to receive messages — no webhook or public IP needed!
 
 </details>
@@ -328,7 +328,7 @@ Uses **botpy SDK** with WebSocket — no public IP required.
 tinyclaw gateway
 ```
 
-> \[!TIP]
+> **TIP**
 > QQ bot currently supports **private messages only**. Group chat support coming soon!
 
 </details>
@@ -465,7 +465,7 @@ Config file: `~/.nanobot/config.json`
 
 ### Providers
 
-> \[!TIP]
+> **TIP**
 >
 > - **Groq** provides free voice transcription via Whisper. If configured, Telegram voice messages will be automatically transcribed.
 > - **Zhipu Coding Plan**: If you're on Zhipu's coding plan, set `"apiBase": "https://open.bigmodel.cn/api/coding/paas/v4"` in your zhipu provider config.
@@ -572,7 +572,7 @@ tinyclaw cron remove <job_id>
 
 ## 🐳 Docker
 
-> \[!TIP]
+> **TIP**
 > The `-v ~/.nanobot:/root/.nanobot` flag mounts your local config directory into the container, so your config and workspace persist across container restarts.
 
 Build and run tinyclaw in a container:
