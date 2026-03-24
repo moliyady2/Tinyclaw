@@ -21,7 +21,7 @@
 ## 🏗️ Architecture
 
 <p align="center">
-  <img src="flow chart.png" alt="tinyclaw architecture" width="800">
+  <img src="flowchart.png" alt="tinyclaw architecture" width="800">
 </p>
 
 
