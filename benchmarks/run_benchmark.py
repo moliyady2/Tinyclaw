@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
 Simple script to run LLM benchmark with proper environment setup.
+Models and API configuration are loaded from nanobot's config.json.
 """
 
 import os
@@ -8,39 +9,34 @@ import sys
 import asyncio
 from pathlib import Path
 
-# Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from benchmarks.llm_benchmark import LLMBenchmark
 
 
 async def main():
-    """Run benchmark with environment variable setup."""
-    # Load API key from environment or config
-    api_key = os.getenv("NVIDIA_API_KEY", "")
-    
-    if not api_key:
-        print("Warning: NVIDIA_API_KEY not set. Please set it in your environment.")
-        print("Example: export NVIDIA_API_KEY='nvapi-xxxxx'")
-        print("\nOr update the config file directly at benchmarks/llm_benchmark_config.json")
-        return
-    
+    """Run benchmark using nanobot config.json for models and API."""
     print("=" * 80)
     print("Starting LLM Benchmark")
     print("=" * 80)
-    print(f"API Key: {api_key[:10]}...{api_key[-4:]}")
+    print("📋 Loading models from: ~/.nanobot/config.json")
     print()
     
-    # Initialize and run benchmark
-    benchmark = LLMBenchmark()
+    config_path = Path(__file__).parent / "llm_benchmark_config.json"
+    benchmark = LLMBenchmark(config_path=str(config_path))
     
     try:
-        await benchmark.run_benchmark()
+        benchmark.load_config()
         
-        # Generate report
-        report = benchmark.generate_report()
+        print(f"📊 Loaded {len(benchmark.providers)} provider(s)")
+        for p in benchmark.providers:
+            print(f"   - {p.display_name}: {len(p.models)} model(s)")
+            for m in p.models:
+                print(f"     • {m['name']}")
+        print()
         
-        # Save and display
+        report = await benchmark.run_benchmark(restore_config=True)
+        
         output_path = benchmark.save_report(report)
         benchmark.print_summary(report)
         

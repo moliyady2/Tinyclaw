@@ -157,7 +157,7 @@
       {
         "name": "my-nvidia-provider",
         "displayName": "My nvidia LLM Provider",
-        "apiKey": "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",
+        "apiKey": "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",
         "apiBase": "https://integrate.api.nvidia.com/v1",
         "models": [
           "z-ai/glm4.7",

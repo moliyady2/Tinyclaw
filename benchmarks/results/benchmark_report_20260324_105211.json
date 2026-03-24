@@ -1,0 +1,685 @@
+{
+  "timestamp": "2026-03-24T10:52:11.221090",
+  "summary": {
+    "total_tests": 24,
+    "successful": 22,
+    "failed": 2,
+    "success_rate": 0.9166666666666666,
+    "avg_response_time": 58.20795503529635,
+    "total_tokens": 21030
+  },
+  "provider_comparison": {
+    "My nvidia LLM Provider": {
+      "avg_response_time": 58.20795503529635,
+      "median_response_time": 49.684159994125366,
+      "min_response_time": 1.6669158935546875,
+      "max_response_time": 114.57560658454895,
+      "avg_token_usage": 955.9090909090909,
+      "test_count": 22
+    }
+  },
+  "model_comparison": {
+    "My nvidia LLM Provider/moonshotai/kimi-k2.5": {
+      "avg_response_time": 96.034574338368,
+      "median_response_time": 104.03146719932556,
+      "min_response_time": 79.9268434047699,
+      "max_response_time": 112.19244861602783,
+      "avg_token_usage": 783.5714285714286,
+      "test_count": 7
+    },
+    "My nvidia LLM Provider/qwen/qwen3.5-122b-a10b": {
+      "avg_response_time": 19.578870207071304,
+      "median_response_time": 16.07583522796631,
+      "min_response_time": 1.6669158935546875,
+      "max_response_time": 49.684159994125366,
+      "avg_token_usage": 461.875,
+      "test_count": 8
+    },
+    "My nvidia LLM Provider/z-ai/glm4.7": {
+      "avg_response_time": 64.52886125019619,
+      "median_response_time": 49.228816509246826,
+      "min_response_time": 28.307305097579956,
+      "max_response_time": 114.57560658454895,
+      "avg_token_usage": 1692.857142857143,
+      "test_count": 7
+    }
+  },
+  "test_case_results": {
+    "simple_qa": {
+      "name": "简单问答",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "moonshotai/kimi-k2.5",
+          "response_time": 79.9268434047699,
+          "token_usage": {
+            "prompt_tokens": 17,
+            "completion_tokens": 406,
+            "total_tokens": 423
+          },
+          "keyword_score": 0.5
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 7.702497482299805,
+          "token_usage": {
+            "prompt_tokens": 20,
+            "completion_tokens": 105,
+            "total_tokens": 125
+          },
+          "keyword_score": 0.75
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "z-ai/glm4.7",
+          "response_time": 41.486387491226196,
+          "token_usage": {
+            "prompt_tokens": 15,
+            "completion_tokens": 938,
+            "total_tokens": 953
+          },
+          "keyword_score": 0.5
+        }
+      ]
+    },
+    "code_generation": {
+      "name": "代码生成",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "moonshotai/kimi-k2.5",
+          "response_time": 104.03146719932556,
+          "token_usage": {
+            "prompt_tokens": 21,
+            "completion_tokens": 2154,
+            "total_tokens": 2175
+          },
+          "keyword_score": 0.75
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 31.652406215667725,
+          "token_usage": {
+            "prompt_tokens": 26,
+            "completion_tokens": 798,
+            "total_tokens": 824
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "z-ai/glm4.7",
+          "response_time": 114.57560658454895,
+          "token_usage": {
+            "prompt_tokens": 19,
+            "completion_tokens": 2707,
+            "total_tokens": 2726
+          },
+          "keyword_score": 1.0
+        }
+      ]
+    },
+    "long_context": {
+      "name": "长文本处理",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "moonshotai/kimi-k2.5",
+          "response_time": 104.66118240356445,
+          "token_usage": {
+            "prompt_tokens": 23,
+            "completion_tokens": 306,
+            "total_tokens": 329
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 1.8425593376159668,
+          "token_usage": {
+            "prompt_tokens": 28,
+            "completion_tokens": 88,
+            "total_tokens": 116
+          },
+          "keyword_score": 0.6666666666666666
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "z-ai/glm4.7",
+          "response_time": 49.228816509246826,
+          "token_usage": {
+            "prompt_tokens": 21,
+            "completion_tokens": 777,
+            "total_tokens": 798
+          },
+          "keyword_score": 1.0
+        }
+      ]
+    },
+    "chinese_reasoning": {
+      "name": "中文推理",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "moonshotai/kimi-k2.5",
+          "response_time": 85.24449038505554,
+          "token_usage": {
+            "prompt_tokens": 28,
+            "completion_tokens": 352,
+            "total_tokens": 380
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 16.07583522796631,
+          "token_usage": {
+            "prompt_tokens": 32,
+            "completion_tokens": 111,
+            "total_tokens": 143
+          },
+          "keyword_score": 0.6666666666666666
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "z-ai/glm4.7",
+          "response_time": 28.307305097579956,
+          "token_usage": {
+            "prompt_tokens": 25,
+            "completion_tokens": 571,
+            "total_tokens": 596
+          },
+          "keyword_score": 1.0
+        }
+      ]
+    },
+    "creative_writing": {
+      "name": "创意写作",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "moonshotai/kimi-k2.5",
+          "response_time": 81.574875831604,
+          "token_usage": {
+            "prompt_tokens": 17,
+            "completion_tokens": 458,
+            "total_tokens": 475
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 1.6669158935546875,
+          "token_usage": {
+            "prompt_tokens": 24,
+            "completion_tokens": 60,
+            "total_tokens": 84
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "z-ai/glm4.7",
+          "response_time": 41.85484337806702,
+          "token_usage": {
+            "prompt_tokens": 15,
+            "completion_tokens": 1197,
+            "total_tokens": 1212
+          },
+          "keyword_score": 1.0
+        }
+      ]
+    },
+    "math_problem": {
+      "name": "数学问题",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 39.67399835586548,
+          "token_usage": {
+            "prompt_tokens": 35,
+            "completion_tokens": 859,
+            "total_tokens": 894
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "z-ai/glm4.7",
+          "response_time": 83.19317722320557,
+          "token_usage": {
+            "prompt_tokens": 28,
+            "completion_tokens": 3012,
+            "total_tokens": 3040
+          },
+          "keyword_score": 1.0
+        }
+      ]
+    },
+    "multi_turn_conversation": {
+      "name": "多轮对话",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "moonshotai/kimi-k2.5",
+          "response_time": 112.19244861602783,
+          "token_usage": {
+            "prompt_tokens": 48,
+            "completion_tokens": 830,
+            "total_tokens": 878
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 49.684159994125366,
+          "token_usage": {
+            "prompt_tokens": 51,
+            "completion_tokens": 1001,
+            "total_tokens": 1052
+          },
+          "keyword_score": 1.0
+        }
+      ]
+    },
+    "tool_calling_simulation": {
+      "name": "工具调用模拟",
+      "results": [
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "moonshotai/kimi-k2.5",
+          "response_time": 104.61071252822876,
+          "token_usage": {
+            "prompt_tokens": 23,
+            "completion_tokens": 802,
+            "total_tokens": 825
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "qwen/qwen3.5-122b-a10b",
+          "response_time": 8.332589149475098,
+          "token_usage": {
+            "prompt_tokens": 26,
+            "completion_tokens": 431,
+            "total_tokens": 457
+          },
+          "keyword_score": 1.0
+        },
+        {
+          "provider": "My nvidia LLM Provider",
+          "model": "z-ai/glm4.7",
+          "response_time": 93.05589246749878,
+          "token_usage": {
+            "prompt_tokens": 20,
+            "completion_tokens": 2505,
+            "total_tokens": 2525
+          },
+          "keyword_score": 1.0
+        }
+      ]
+    }
+  },
+  "detailed_results": [
+    {
+      "test_id": "simple_qa",
+      "test_name": "简单问答",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": true,
+      "response_time": 79.9268434047699,
+      "token_usage": {
+        "prompt_tokens": 17,
+        "completion_tokens": 406,
+        "total_tokens": 423
+      },
+      "error_message": "",
+      "keyword_match_score": 0.5
+    },
+    {
+      "test_id": "code_generation",
+      "test_name": "代码生成",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": true,
+      "response_time": 104.03146719932556,
+      "token_usage": {
+        "prompt_tokens": 21,
+        "completion_tokens": 2154,
+        "total_tokens": 2175
+      },
+      "error_message": "",
+      "keyword_match_score": 0.75
+    },
+    {
+      "test_id": "long_context",
+      "test_name": "长文本处理",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": true,
+      "response_time": 104.66118240356445,
+      "token_usage": {
+        "prompt_tokens": 23,
+        "completion_tokens": 306,
+        "total_tokens": 329
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "chinese_reasoning",
+      "test_name": "中文推理",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": true,
+      "response_time": 85.24449038505554,
+      "token_usage": {
+        "prompt_tokens": 28,
+        "completion_tokens": 352,
+        "total_tokens": 380
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "creative_writing",
+      "test_name": "创意写作",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": true,
+      "response_time": 81.574875831604,
+      "token_usage": {
+        "prompt_tokens": 17,
+        "completion_tokens": 458,
+        "total_tokens": 475
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "math_problem",
+      "test_name": "数学问题",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": false,
+      "response_time": 0.0,
+      "token_usage": null,
+      "error_message": "Timeout",
+      "keyword_match_score": 0.0
+    },
+    {
+      "test_id": "multi_turn_conversation",
+      "test_name": "多轮对话",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": true,
+      "response_time": 112.19244861602783,
+      "token_usage": {
+        "prompt_tokens": 48,
+        "completion_tokens": 830,
+        "total_tokens": 878
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "tool_calling_simulation",
+      "test_name": "工具调用模拟",
+      "provider": "My nvidia LLM Provider",
+      "model": "moonshotai/kimi-k2.5",
+      "success": true,
+      "response_time": 104.61071252822876,
+      "token_usage": {
+        "prompt_tokens": 23,
+        "completion_tokens": 802,
+        "total_tokens": 825
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "simple_qa",
+      "test_name": "简单问答",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 7.702497482299805,
+      "token_usage": {
+        "prompt_tokens": 20,
+        "completion_tokens": 105,
+        "total_tokens": 125
+      },
+      "error_message": "",
+      "keyword_match_score": 0.75
+    },
+    {
+      "test_id": "code_generation",
+      "test_name": "代码生成",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 31.652406215667725,
+      "token_usage": {
+        "prompt_tokens": 26,
+        "completion_tokens": 798,
+        "total_tokens": 824
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "long_context",
+      "test_name": "长文本处理",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 1.8425593376159668,
+      "token_usage": {
+        "prompt_tokens": 28,
+        "completion_tokens": 88,
+        "total_tokens": 116
+      },
+      "error_message": "",
+      "keyword_match_score": 0.6666666666666666
+    },
+    {
+      "test_id": "chinese_reasoning",
+      "test_name": "中文推理",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 16.07583522796631,
+      "token_usage": {
+        "prompt_tokens": 32,
+        "completion_tokens": 111,
+        "total_tokens": 143
+      },
+      "error_message": "",
+      "keyword_match_score": 0.6666666666666666
+    },
+    {
+      "test_id": "creative_writing",
+      "test_name": "创意写作",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 1.6669158935546875,
+      "token_usage": {
+        "prompt_tokens": 24,
+        "completion_tokens": 60,
+        "total_tokens": 84
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "math_problem",
+      "test_name": "数学问题",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 39.67399835586548,
+      "token_usage": {
+        "prompt_tokens": 35,
+        "completion_tokens": 859,
+        "total_tokens": 894
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "multi_turn_conversation",
+      "test_name": "多轮对话",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 49.684159994125366,
+      "token_usage": {
+        "prompt_tokens": 51,
+        "completion_tokens": 1001,
+        "total_tokens": 1052
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "tool_calling_simulation",
+      "test_name": "工具调用模拟",
+      "provider": "My nvidia LLM Provider",
+      "model": "qwen/qwen3.5-122b-a10b",
+      "success": true,
+      "response_time": 8.332589149475098,
+      "token_usage": {
+        "prompt_tokens": 26,
+        "completion_tokens": 431,
+        "total_tokens": 457
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "simple_qa",
+      "test_name": "简单问答",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": true,
+      "response_time": 41.486387491226196,
+      "token_usage": {
+        "prompt_tokens": 15,
+        "completion_tokens": 938,
+        "total_tokens": 953
+      },
+      "error_message": "",
+      "keyword_match_score": 0.5
+    },
+    {
+      "test_id": "code_generation",
+      "test_name": "代码生成",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": true,
+      "response_time": 114.57560658454895,
+      "token_usage": {
+        "prompt_tokens": 19,
+        "completion_tokens": 2707,
+        "total_tokens": 2726
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "long_context",
+      "test_name": "长文本处理",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": true,
+      "response_time": 49.228816509246826,
+      "token_usage": {
+        "prompt_tokens": 21,
+        "completion_tokens": 777,
+        "total_tokens": 798
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "chinese_reasoning",
+      "test_name": "中文推理",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": true,
+      "response_time": 28.307305097579956,
+      "token_usage": {
+        "prompt_tokens": 25,
+        "completion_tokens": 571,
+        "total_tokens": 596
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "creative_writing",
+      "test_name": "创意写作",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": true,
+      "response_time": 41.85484337806702,
+      "token_usage": {
+        "prompt_tokens": 15,
+        "completion_tokens": 1197,
+        "total_tokens": 1212
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "math_problem",
+      "test_name": "数学问题",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": true,
+      "response_time": 83.19317722320557,
+      "token_usage": {
+        "prompt_tokens": 28,
+        "completion_tokens": 3012,
+        "total_tokens": 3040
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    },
+    {
+      "test_id": "multi_turn_conversation",
+      "test_name": "多轮对话",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": false,
+      "response_time": 0.0,
+      "token_usage": null,
+      "error_message": "Timeout",
+      "keyword_match_score": 0.0
+    },
+    {
+      "test_id": "tool_calling_simulation",
+      "test_name": "工具调用模拟",
+      "provider": "My nvidia LLM Provider",
+      "model": "z-ai/glm4.7",
+      "success": true,
+      "response_time": 93.05589246749878,
+      "token_usage": {
+        "prompt_tokens": 20,
+        "completion_tokens": 2505,
+        "total_tokens": 2525
+      },
+      "error_message": "",
+      "keyword_match_score": 1.0
+    }
+  ]
+}

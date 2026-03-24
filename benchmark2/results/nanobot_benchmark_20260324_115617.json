@@ -1,0 +1,538 @@
+{
+  "timestamp": "2026-03-24T11:56:10.598215",
+  "tinyclaw_version": "0.1.0",
+  "test_environment": {
+    "python_version": "3.13.9 | packaged by Anaconda, Inc. | (main, Oct 21 2025, 19:09:58) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "processor": "Intel64 Family 6 Model 198 Stepping 2, GenuineIntel",
+    "cpu_count": 24,
+    "timestamp": "2026-03-24T11:56:10.631627"
+  },
+  "summary": {
+    "tool_benchmark": {
+      "total_tests": 41,
+      "successful": 38,
+      "failed": 3,
+      "by_tool": {
+        "write_file": {
+          "count": 5,
+          "success_rate": 1.0,
+          "avg_time_ms": 0.6935799727216363,
+          "min_time_ms": 0.6013999809511006,
+          "max_time_ms": 0.8651000098325312,
+          "median_time_ms": 0.6889999494887888
+        },
+        "read_file": {
+          "count": 5,
+          "success_rate": 1.0,
+          "avg_time_ms": 0.37844000617042184,
+          "min_time_ms": 0.36020000698044896,
+          "max_time_ms": 0.4217000096105039,
+          "median_time_ms": 0.36750000435858965
+        },
+        "list_dir": {
+          "count": 5,
+          "success_rate": 1.0,
+          "avg_time_ms": 0.33049999037757516,
+          "min_time_ms": 0.31599996145814657,
+          "max_time_ms": 0.34229998709633946,
+          "median_time_ms": 0.33190002432093024
+        },
+        "edit_file": {
+          "count": 5,
+          "success_rate": 1.0,
+          "avg_time_ms": 0.3609000123105943,
+          "min_time_ms": 0.3456000122241676,
+          "max_time_ms": 0.3872000379487872,
+          "median_time_ms": 0.3533000126481056
+        },
+        "exec": {
+          "count": 12,
+          "success_rate": 1.0,
+          "avg_time_ms": 19.451699995746214,
+          "min_time_ms": 11.329500004649162,
+          "max_time_ms": 33.47389999544248,
+          "median_time_ms": 15.972900000633672
+        },
+        "web_fetch": {
+          "count": 6,
+          "success_rate": 0.5,
+          "avg_time_ms": 1436.1783333394367,
+          "min_time_ms": 1153.5993000143208,
+          "max_time_ms": 1912.9317000042647,
+          "median_time_ms": 1242.0039999997243
+        },
+        "concurrent": {
+          "count": 3,
+          "success_rate": 1.0,
+          "avg_time_ms": 3.850499982945621,
+          "min_time_ms": 3.5299999872222543,
+          "max_time_ms": 4.413699964061379,
+          "median_time_ms": 3.6077999975532293
+        }
+      }
+    },
+    "llm_benchmark": {
+      "status": "not_run"
+    },
+    "end_to_end_benchmark": {
+      "total_tests": 6,
+      "successful": 6,
+      "failed": 0,
+      "by_category": {
+        "initialization": {
+          "count": 3,
+          "avg_time_ms": 0.09096668024236958
+        },
+        "context": {
+          "count": 1,
+          "avg_time_ms": 27.070699958130717
+        },
+        "message_bus": {
+          "count": 2,
+          "avg_time_ms": 0.040149985579773784
+        }
+      }
+    }
+  },
+  "tool_results": [
+    {
+      "tool_name": "write_file",
+      "operation": "write_1",
+      "total_time_ms": 0.8651000098325312,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_2",
+      "total_time_ms": 0.705299957189709,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_3",
+      "total_time_ms": 0.6889999494887888,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_4",
+      "total_time_ms": 0.6013999809511006,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "write_file",
+      "operation": "write_5",
+      "total_time_ms": 0.6070999661460519,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_1",
+      "total_time_ms": 0.4217000096105039,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_2",
+      "total_time_ms": 0.36020000698044896,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_3",
+      "total_time_ms": 0.3667999990284443,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_4",
+      "total_time_ms": 0.3760000108741224,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "read_file",
+      "operation": "read_5",
+      "total_time_ms": 0.36750000435858965,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "content_size": 2700
+      }
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_1",
+      "total_time_ms": 0.34069997491315007,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_2",
+      "total_time_ms": 0.32160000409930944,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_3",
+      "total_time_ms": 0.33190002432093024,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_4",
+      "total_time_ms": 0.34229998709633946,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "list_dir",
+      "operation": "list_5",
+      "total_time_ms": 0.31599996145814657,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_1",
+      "total_time_ms": 0.34850003430619836,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_2",
+      "total_time_ms": 0.3456000122241676,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_3",
+      "total_time_ms": 0.3698999644257128,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_4",
+      "total_time_ms": 0.3533000126481056,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "edit_file",
+      "operation": "edit_5",
+      "total_time_ms": 0.3872000379487872,
+      "success": true,
+      "error_message": "",
+      "metadata": {}
+    },
+    {
+      "tool_name": "exec",
+      "operation": "echo_1",
+      "total_time_ms": 13.786899973638356,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "echo 'Hello World'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "echo_2",
+      "total_time_ms": 13.840699975844473,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "echo 'Hello World'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "echo_3",
+      "total_time_ms": 12.51809997484088,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "echo 'Hello World'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "ls_1",
+      "total_time_ms": 12.915700033772737,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "dir"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "ls_2",
+      "total_time_ms": 11.329500004649162,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "dir"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "ls_3",
+      "total_time_ms": 11.488799995277077,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "dir"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "python_version_1",
+      "total_time_ms": 18.10510002542287,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python --version"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "python_version_2",
+      "total_time_ms": 18.771299975924194,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python --version"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "python_version_3",
+      "total_time_ms": 20.266600011382252,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python --version"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "simple_math_1",
+      "total_time_ms": 33.46499998588115,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python -c 'print(sum(range(1000)))'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "simple_math_2",
+      "total_time_ms": 33.47389999544248,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python -c 'print(sum(range(1000)))'"
+      }
+    },
+    {
+      "tool_name": "exec",
+      "operation": "simple_math_3",
+      "total_time_ms": 33.45879999687895,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "command": "python -c 'print(sum(range(1000)))'"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "httpbin_get_1",
+      "total_time_ms": 1242.0039999997243,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "url": "https://httpbin.org/get"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "httpbin_get_2",
+      "total_time_ms": 1912.9317000042647,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "url": "https://httpbin.org/get"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "httpbin_get_3",
+      "total_time_ms": 1153.5993000143208,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "url": "https://httpbin.org/get"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "example_1",
+      "total_time_ms": 725.6393000134267,
+      "success": false,
+      "error_message": "{\"error\": \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)\", \"url\": \"https://example.com\"}",
+      "metadata": {
+        "url": "https://example.com"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "example_2",
+      "total_time_ms": 680.1722000236623,
+      "success": false,
+      "error_message": "{\"error\": \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)\", \"url\": \"https://example.com\"}",
+      "metadata": {
+        "url": "https://example.com"
+      }
+    },
+    {
+      "tool_name": "web_fetch",
+      "operation": "example_3",
+      "total_time_ms": 671.3455999852158,
+      "success": false,
+      "error_message": "{\"error\": \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)\", \"url\": \"https://example.com\"}",
+      "metadata": {
+        "url": "https://example.com"
+      }
+    },
+    {
+      "tool_name": "concurrent",
+      "operation": "concurrent_10_1",
+      "total_time_ms": 4.413699964061379,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "concurrent_tasks": 10,
+        "success_count": 10
+      }
+    },
+    {
+      "tool_name": "concurrent",
+      "operation": "concurrent_10_2",
+      "total_time_ms": 3.5299999872222543,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "concurrent_tasks": 10,
+        "success_count": 10
+      }
+    },
+    {
+      "tool_name": "concurrent",
+      "operation": "concurrent_10_3",
+      "total_time_ms": 3.6077999975532293,
+      "success": true,
+      "error_message": "",
+      "metadata": {
+        "concurrent_tasks": 10,
+        "success_count": 10
+      }
+    }
+  ],
+  "llm_results": [],
+  "end_to_end_results": [
+    {
+      "category": "initialization",
+      "operation": "create_message_bus",
+      "total_time_ms": 0.018200022168457508,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "category": "initialization",
+      "operation": "create_tool_registry",
+      "total_time_ms": 0.002600019797682762,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "category": "initialization",
+      "operation": "create_context_builder",
+      "total_time_ms": 0.25209999876096845,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "category": "context",
+      "operation": "build_messages",
+      "total_time_ms": 27.070699958130717,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "category": "message_bus",
+      "operation": "publish_100_messages",
+      "total_time_ms": 0.04509999416768551,
+      "success": true,
+      "error_message": ""
+    },
+    {
+      "category": "message_bus",
+      "operation": "consume_100_messages",
+      "total_time_ms": 0.03519997699186206,
+      "success": true,
+      "error_message": ""
+    }
+  ]
+}

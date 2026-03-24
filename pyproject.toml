@@ -45,6 +45,7 @@ dev = [
 
 [project.scripts]
 tinyclaw = "nanobot.cli.commands:app"
+nanobot = "nanobot.cli.commands:app"
 
 [build-system]
 requires = ["hatchling"]

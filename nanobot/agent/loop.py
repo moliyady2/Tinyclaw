@@ -141,6 +141,73 @@ class AgentLoop:
         self._running = False
         logger.info("Agent loop stopping")
     
+    async def _run_agent_loop(
+        self,
+        messages: list[dict],
+        channel: str,
+        chat_id: str,
+    ) -> tuple[str, list[dict]]:
+        """
+        Run the agent loop: call LLM, execute tools, and build response.
+        
+        Args:
+            messages: The message history to start with.
+            channel: The channel for context.
+            chat_id: The chat ID for context.
+        
+        Returns:
+            A tuple of (final_content, final_messages).
+        """
+        iteration = 0
+        final_content = None
+        
+        while iteration < self.max_iterations:
+            iteration += 1
+            
+            # Call LLM
+            response = await self.provider.chat(
+                messages=messages,
+                tools=self.tools.get_definitions(),
+                model=self.model
+            )
+            
+            # Handle tool calls
+            if response.has_tool_calls:
+                # Add assistant message with tool calls
+                tool_call_dicts = [
+                    {
+                        "id": tc.id,
+                        "type": "function",
+                        "function": {
+                            "name": tc.name,
+                            "arguments": json.dumps(tc.arguments)
+                        }
+                    }
+                    for tc in response.tool_calls
+                ]
+                messages = self.context.add_assistant_message(
+                    messages, response.content, tool_call_dicts,
+                    reasoning_content=response.reasoning_content,
+                )
+                
+                # Execute tools
+                for tool_call in response.tool_calls:
+                    args_str = json.dumps(tool_call.arguments, ensure_ascii=False)
+                    logger.info(f"Tool call: {tool_call.name}({args_str[:200]})")
+                    result = await self.tools.execute(tool_call.name, tool_call.arguments)
+                    messages = self.context.add_tool_result(
+                        messages, tool_call.id, tool_call.name, result
+                    )
+            else:
+                # No tool calls, we're done
+                final_content = response.content
+                break
+        
+        if final_content is None:
+            final_content = "I've completed processing but have no response to give."
+        
+        return final_content, messages
+    
     async def _process_message(self, msg: InboundMessage) -> OutboundMessage | None:
         """
         Process a single inbound message.
@@ -184,54 +251,12 @@ class AgentLoop:
             chat_id=msg.chat_id,
         )
         
-        # Agent loop
-        iteration = 0
-        final_content = None
-        
-        while iteration < self.max_iterations:
-            iteration += 1
-            
-            # Call LLM
-            response = await self.provider.chat(
-                messages=messages,
-                tools=self.tools.get_definitions(),
-                model=self.model
-            )
-            
-            # Handle tool calls
-            if response.has_tool_calls:
-                # Add assistant message with tool calls
-                tool_call_dicts = [
-                    {
-                        "id": tc.id,
-                        "type": "function",
-                        "function": {
-                            "name": tc.name,
-                            "arguments": json.dumps(tc.arguments)  # Must be JSON string
-                        }
-                    }
-                    for tc in response.tool_calls
-                ]
-                messages = self.context.add_assistant_message(
-                    messages, response.content, tool_call_dicts,
-                    reasoning_content=response.reasoning_content,
-                )
-                
-                # Execute tools
-                for tool_call in response.tool_calls:
-                    args_str = json.dumps(tool_call.arguments, ensure_ascii=False)
-                    logger.info(f"Tool call: {tool_call.name}({args_str[:200]})")
-                    result = await self.tools.execute(tool_call.name, tool_call.arguments)
-                    messages = self.context.add_tool_result(
-                        messages, tool_call.id, tool_call.name, result
-                    )
-            else:
-                # No tool calls, we're done
-                final_content = response.content
-                break
-        
-        if final_content is None:
-            final_content = "I've completed processing but have no response to give."
+        # Run agent loop
+        final_content, _ = await self._run_agent_loop(
+            messages=messages,
+            channel=msg.channel,
+            chat_id=msg.chat_id,
+        )
         
         # Log response preview
         preview = final_content[:120] + "..." if len(final_content) > 120 else final_content
@@ -293,49 +318,12 @@ class AgentLoop:
             chat_id=origin_chat_id,
         )
         
-        # Agent loop (limited for announce handling)
-        iteration = 0
-        final_content = None
-        
-        while iteration < self.max_iterations:
-            iteration += 1
-            
-            response = await self.provider.chat(
-                messages=messages,
-                tools=self.tools.get_definitions(),
-                model=self.model
-            )
-            
-            if response.has_tool_calls:
-                tool_call_dicts = [
-                    {
-                        "id": tc.id,
-                        "type": "function",
-                        "function": {
-                            "name": tc.name,
-                            "arguments": json.dumps(tc.arguments)
-                        }
-                    }
-                    for tc in response.tool_calls
-                ]
-                messages = self.context.add_assistant_message(
-                    messages, response.content, tool_call_dicts,
-                    reasoning_content=response.reasoning_content,
-                )
-                
-                for tool_call in response.tool_calls:
-                    args_str = json.dumps(tool_call.arguments, ensure_ascii=False)
-                    logger.info(f"Tool call: {tool_call.name}({args_str[:200]})")
-                    result = await self.tools.execute(tool_call.name, tool_call.arguments)
-                    messages = self.context.add_tool_result(
-                        messages, tool_call.id, tool_call.name, result
-                    )
-            else:
-                final_content = response.content
-                break
-        
-        if final_content is None:
-            final_content = "Background task completed."
+        # Run agent loop
+        final_content, _ = await self._run_agent_loop(
+            messages=messages,
+            channel=origin_channel,
+            chat_id=origin_chat_id,
+        )
         
         # Save to session (mark as system message in history)
         session.add_message("user", f"[System: {msg.sender_id}] {msg.content}")

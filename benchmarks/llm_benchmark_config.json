@@ -6,53 +6,6 @@
     "output_dir": "./benchmarks/results",
     "save_responses": true
   },
-  "providers": [
-    {
-      "name": "nvidia",
-      "display_name": "NVIDIA NIM",
-      "enabled": true,
-      "api_key": "${NVIDIA_API_KEY}",
-      "api_base": "https://integrate.api.nvidia.com/v1",
-      "models": [
-        {
-          "name": "z-ai/glm4.7",
-          "enabled": true,
-          "max_tokens": 4096,
-          "temperature": 0.7
-        }
-      ]
-    },
-    {
-      "name": "moonshot",
-      "display_name": "Moonshot AI",
-      "enabled": true,
-      "api_key": "${MOONSHOT_API_KEY}",
-      "api_base": "https://api.moonshot.cn/v1",
-      "models": [
-        {
-          "name": "kimi-k2.5",
-          "enabled": true,
-          "max_tokens": 4096,
-          "temperature": 1.0
-        }
-      ]
-    },
-    {
-      "name": "minimax",
-      "display_name": "MiniMax",
-      "enabled": true,
-      "api_key": "${MINIMAX_API_KEY}",
-      "api_base": "https://api.minimax.chat/v1",
-      "models": [
-        {
-          "name": "minimax-m2.1",
-          "enabled": true,
-          "max_tokens": 4096,
-          "temperature": 0.7
-        }
-      ]
-    }
-  ],
   "test_cases": [
     {
       "id": "simple_qa",

@@ -2,11 +2,13 @@
 LLM Benchmark - 多供应商 LLM 性能测试工具
 
 测试多个 LLM 供应商和模型的性能表现，支持对比分析。
+从 nanobot 的 config.json 读取模型列表进行测试。
 """
 
 import asyncio
 import json
 import os
+import shutil
 import time
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -15,6 +17,8 @@ from typing import Any
 
 from nanobot.providers.litellm_provider import LiteLLMProvider
 from nanobot.providers.base import LLMResponse
+
+NANOBOT_CONFIG_PATH = Path.home() / ".nanobot" / "config.json"
 
 
 @dataclass
@@ -78,6 +82,69 @@ class LLMBenchmark:
         self.test_cases: list[TestCase] = []
         self.results: list[TestResult] = []
 
+    def load_nanobot_config(self) -> dict[str, Any]:
+        """Load nanobot config.json to get model list."""
+        if not NANOBOT_CONFIG_PATH.exists():
+            raise FileNotFoundError(f"NanoBot config not found: {NANOBOT_CONFIG_PATH}")
+        
+        with open(NANOBOT_CONFIG_PATH, 'r', encoding='utf-8') as f:
+            return json.load(f)
+
+    def save_nanobot_config(self, config: dict[str, Any]) -> None:
+        """Save nanobot config.json."""
+        with open(NANOBOT_CONFIG_PATH, 'w', encoding='utf-8') as f:
+            json.dump(config, f, indent=2, ensure_ascii=False)
+
+    def backup_nanobot_config(self) -> Path:
+        """Backup nanobot config before modification."""
+        backup_path = NANOBOT_CONFIG_PATH.with_suffix('.json.bak')
+        shutil.copy2(NANOBOT_CONFIG_PATH, backup_path)
+        return backup_path
+
+    def restore_nanobot_config(self, backup_path: Path) -> None:
+        """Restore nanobot config from backup."""
+        shutil.copy2(backup_path, NANOBOT_CONFIG_PATH)
+
+    def get_models_from_nanobot_config(self) -> list[str]:
+        """Get model list from nanobot config customProviders."""
+        config = self.load_nanobot_config()
+        providers_config = config.get('providers', {})
+        custom_providers = providers_config.get('customProviders', [])
+        
+        for provider in custom_providers:
+            models = provider.get('models', [])
+            if models:
+                return models
+        
+        raise ValueError("No models found in nanobot config customProviders")
+
+    def setup_model_for_testing(self, model_name: str) -> None:
+        """
+        Setup nanobot config for testing a specific model:
+        1. Move the model to the first position in models list
+        2. Set the default model to the target model
+        """
+        config = self.load_nanobot_config()
+        providers_config = config.get('providers', {})
+        custom_providers = providers_config.get('customProviders', [])
+        
+        for provider in custom_providers:
+            models = provider.get('models', [])
+            if model_name in models:
+                models.remove(model_name)
+                models.insert(0, model_name)
+                provider['models'] = models
+                
+                agents = config.get('agents', {})
+                defaults = agents.get('defaults', {})
+                defaults['model'] = model_name
+                
+                self.save_nanobot_config(config)
+                print(f"✅ Configured for model: {model_name}")
+                return
+        
+        raise ValueError(f"Model {model_name} not found in nanobot config")
+
     def load_config(self) -> None:
         """Load benchmark configuration."""
         if not self.config_path.exists():
@@ -90,23 +157,35 @@ class LLMBenchmark:
         self._load_test_cases()
 
     def _load_providers(self) -> None:
-        """Load provider configurations."""
-        providers_data = self.config.get('providers', [])
-
-        for provider_data in providers_data:
-            # 获取 API Key（支持环境变量）
-            api_key = provider_data.get('api_key', '')
-            if api_key.startswith('${') and api_key.endswith('}'):
-                env_var = api_key[2:-1]
-                api_key = os.environ.get(env_var, '')
-
+        """Load provider configurations from nanobot config."""
+        nanobot_config = self.load_nanobot_config()
+        providers_config = nanobot_config.get('providers', {})
+        custom_providers = providers_config.get('customProviders', [])
+        
+        for cp in custom_providers:
+            api_key = cp.get('apiKey', '')
+            api_base = cp.get('apiBase', cp.get('defaultApiBase', ''))
+            models = cp.get('models', [])
+            
+            if not api_key:
+                continue
+            
+            model_list = []
+            for model_name in models:
+                model_list.append({
+                    'name': model_name,
+                    'enabled': True,
+                    'max_tokens': 4096,
+                    'temperature': 0.7
+                })
+            
             provider = ProviderConfig(
-                name=provider_data['name'],
-                display_name=provider_data.get('display_name', provider_data['name']),
-                enabled=provider_data.get('enabled', True),
+                name=cp.get('name', 'nvidia'),
+                display_name=cp.get('displayName', 'NVIDIA NIM'),
+                enabled=True,
                 api_key=api_key,
-                api_base=provider_data.get('api_base', ''),
-                models=provider_data.get('models', [])
+                api_base=api_base,
+                models=model_list
             )
             self.providers.append(provider)
 
@@ -127,13 +206,25 @@ class LLMBenchmark:
             )
             self.test_cases.append(test_case)
 
-    async def run_benchmark(self) -> BenchmarkReport:
+    async def run_benchmark(self, restore_config: bool = True) -> BenchmarkReport:
         """Run complete benchmark."""
+        backup_path = None
+        if restore_config:
+            backup_path = self.backup_nanobot_config()
+        
+        try:
+            return await self._run_benchmark_internal()
+        finally:
+            if restore_config and backup_path and backup_path.exists():
+                self.restore_nanobot_config(backup_path)
+                print(f"🔄 Config restored from backup: {backup_path}")
+
+    async def _run_benchmark_internal(self) -> BenchmarkReport:
+        """Internal benchmark execution."""
         print("🚀 Starting LLM Benchmark...")
         print(f"📊 Providers: {len(self.providers)}")
         print(f"📝 Test cases: {len(self.test_cases)}")
 
-        # 计算总测试数
         total_tests = sum(
             len([m for m in p.models if m.get('enabled', True)])
             for p in self.providers if p.enabled
@@ -143,7 +234,6 @@ class LLMBenchmark:
 
         current_test = 0
 
-        # 为每个 provider 和模型运行测试
         for provider in self.providers:
             if not provider.enabled:
                 print(f"⏭️  Skipping disabled provider: {provider.display_name}")
@@ -154,6 +244,9 @@ class LLMBenchmark:
                     continue
 
                 model_name = model['name']
+                print(f"\n🔧 Setting up config for model: {model_name}")
+                self.setup_model_for_testing(model_name)
+                
                 print(f"🤖 Testing {provider.display_name}/{model_name}...")
 
                 for test_case in self.test_cases:
@@ -231,7 +324,7 @@ class LLMBenchmark:
                 model=model['name'],
                 success=True,
                 response_time=response_time,
-                token_usage=response.token_usage,
+                token_usage=response.usage,
                 error_message="",
                 keyword_match_score=keyword_score,
                 response_content=response.content[:500] if response.content else ""
