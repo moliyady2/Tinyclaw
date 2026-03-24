@@ -496,7 +496,7 @@ def main():
     """主函数"""
     if len(sys.argv) < 2:
         # 查找最新的 benchmark 结果
-        results_dir = Path("perf/results")
+        results_dir = Path("benchmark2/results")
         if not results_dir.exists():
             print("Error: No benchmark results found")
             sys.exit(1)

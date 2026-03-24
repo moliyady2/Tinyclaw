@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-Tinyclaw Performance Benchmark 运行脚本
+Tinyclaw benchmark2ormance Benchmark 运行脚本
 
 用法:
-    python perf/run_benchmark.py [options]
+    python benchmark2/run_benchmark.py [options]
 
 选项:
     --tools-only        仅运行工具测试
@@ -15,16 +15,16 @@ Tinyclaw Performance Benchmark 运行脚本
 
 示例:
     # 运行所有测试
-    python perf/run_benchmark.py
+    python benchmark2/run_benchmark.py
 
     # 仅运行工具测试
-    python perf/run_benchmark.py --tools-only
+    python benchmark2/run_benchmark.py --tools-only
 
     # 使用自定义配置
-    python perf/run_benchmark.py --config my_config.json
+    python benchmark2/run_benchmark.py --config my_config.json
 
     # 对比两次测试结果
-    python perf/run_benchmark.py --compare perf/results/tinyclaw_benchmark_20240101_120000.json
+    python benchmark2/run_benchmark.py --compare benchmark2/results/tinyclaw_benchmark_20240101_120000.json
 """
 
 import argparse
@@ -38,7 +38,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from loguru import logger
 
-from perf.tinyclaw_benchmark import (
+from benchmark2.tinyclaw_benchmark import (
     TinyclawBenchmarkRunner,
     ToolBenchmark,
     LLMBenchmark,
@@ -49,7 +49,7 @@ from perf.tinyclaw_benchmark import (
 def parse_args():
     """解析命令行参数"""
     parser = argparse.ArgumentParser(
-        description="Tinyclaw Performance Benchmark",
+        description="Tinyclaw benchmark2ormance Benchmark",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 环境变量:
@@ -81,14 +81,14 @@ def parse_args():
     parser.add_argument(
         "--config",
         type=str,
-        default="perf/tinyclaw_benchmark_config.json",
-        help="配置文件路径 (默认: perf/tinyclaw_benchmark_config.json)"
+        default="benchmark2/tinyclaw_benchmark_config.json",
+        help="配置文件路径 (默认: benchmark2/tinyclaw_benchmark_config.json)"
     )
     parser.add_argument(
         "--output-dir",
         type=str,
-        default="perf/results",
-        help="输出目录 (默认: perf/results)"
+        default="benchmark2/results",
+        help="输出目录 (默认: benchmark2/results)"
     )
     parser.add_argument(
         "--compare",

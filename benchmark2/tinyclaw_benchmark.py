@@ -421,7 +421,7 @@ class LLMBenchmark(BaseBenchmark):
     - 成功率
     """
     
-    def __init__(self, config_path: str = "perf/tinyclaw_benchmark_config.json"):
+    def __init__(self, config_path: str = "benchmark2/tinyclaw_benchmark_config.json"):
         super().__init__("LLM Benchmark")
         self.config_path = Path(config_path)
         self.config: dict[str, Any] = {}
@@ -959,7 +959,7 @@ class TinyclawBenchmarkRunner:
         
         return summary
     
-    def save_report(self, output_dir: str = "perf/results") -> str:
+    def save_report(self, output_dir: str = "benchmark2/results") -> str:
         """保存测试报告"""
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
