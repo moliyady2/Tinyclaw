@@ -1,6 +1,6 @@
 
 
-## Tinyclaw: Ultra-Lightweight Personal AI Assistant
+# Tinyclaw: Ultra-Lightweight Personal AI Assistant
 
 🐈 **tinyclaw** is an **ultra-lightweight** personal AI assistant inspired by nanobot and openclaw
 
